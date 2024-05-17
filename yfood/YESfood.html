@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="Description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BEJEWELED</title>
+    <link rel="icon" href="images/BJWLDlogo.png" type="image/x-icon"/> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <style>
+        html,
+        body {
+            scroll-behavior: smooth;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            background-color: #9a9194;
+        }
+
+        header {
+            position: fixed;
+            height: 40px;
+            margin-top: 0px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: #ff0044;
+            width: 100%;
+            transition: .5s ease;
+            z-index: 100;
+            top: 0; 
+            box-shadow: 0 1px 4px hsl(0 4% 15% / 10%);
+        }
+
+        .header2 {
+            margin-top: 5%;
+            height: 225px;
+            font-family:Georgia, 'Times New Roman', Times, serif;
+            font-style:normal;
+            font-size: x-large;
+            text-align: center; 
+            color: #fdfafa;
+            background-color: #1f1d1d; /
+        }
+
+        .home{
+            height: 35px;
+            font-family:Georgia, 'Times New Roman', Times, serif;
+            font-style:normal;
+            font-size: 70px;
+            text-align: center; 
+            color: #ffffff;
+        }
+        .abtme{
+            font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-style:normal;
+            font-size:25px;
+            text-align: center; 
+            color: #fafafa;
+        }
+
+        .contacts {
+            margin-left: px;
+
+        }
+
+        .contacts a{
+            text-decoration: none;
+            font-weight: 500;
+            padding: 30px;
+            background-color: white;
+            margin: 10px;
+            border-radius: 50px;
+            transition: color 0.3s ease;
+            margin-inline-start: 40px;
+        }
+
+        .contacts a i{
+            font-size: 1.9em;
+            color: black;
+            opacity: 0.9;
+        }
+
+        .contacts a:hover {
+            background-color:white;
+            color: #d1175f;
+            border: #0a0a0a;
+            border-radius: 50px;
+            cursor: pointer;
+        }
+
+        .logo {
+            width: 250px;
+            height: auto;
+        }
+
+        .nav_links {
+            list-style: none;
+            margin-top: 10px;
+            margin-right:300px;
+        }
+
+        .nav_links li {
+            display: inline-block;
+            margin-right: 55px;
+        }
+
+        .nav_links li a {
+            text-decoration: none;
+        }
+
+        .items,
+        .contact{
+            padding: 10px 25px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+        .item1{
+            margin-left: 30%;
+            padding: 15px 25px;
+            background-color: #e1ff00;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 80%;
+            font-weight: 500;
+            transition: 0.3s ease;
+        }
+
+        .items:hover,
+        .contact:hover {
+            background-color: #000000;
+            color: white;
+        }
+        .item1:hover{
+            background-color: #ffffff;
+            color:#ff0342 ;
+        }
+
+        .hero-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 3rem;
+            background-color: #000000; 
+            color: white; 
+            margin-top: 1px;
+            padding: 50px; 
+            border-radius: 10px; 
+        }
+        .right img {
+            margin-top: 30px;
+            border-radius: 10%;
+            border: 5px solid #ffffff; 
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); 
+            width: 80%; 
+            height: 70%; 
+        }
+
+        .hero-section .right {
+                margin-top: 20px;
+                margin-inline: 50px;
+                width: 600%;
+        }
+        .hero-section .left{
+            margin-top: -15px;
+            margin-inline: 50px;
+            width: 600%;
+        }
+        .desc{
+            margin-top: -30px;
+        }
+        .heads{
+            border-radius: 15px;
+            margin-top: 60px;
+            margin-bottom: 10px;
+            color: #d9ff00;
+            font-size: 75px;
+            font-family:  'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            background-color: #000000;
+        }
+        .left h1 {
+            margin-top: 25px;
+            font-size: 10rem; /* Increase font size */
+            font-family:Georgia, 'Times New Roman', Times, serif;
+            color: white;
+            font-size: 70px;
+            animation: slideInLeft 2s forwards;
+        }
+
+        .left p {
+            font-size: 2rem; 
+            line-height: 2; 
+            margin-bottom: 10px; 
+            font-family: serif;
+            font-weight: 600;
+            color: rgb(2, 2, 2);
+            font-size: 20px;
+            animation: fadeInUp 2s forwards;
+        }
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .left {
+            color: #313030; 
+            font-family: Arial, sans-serif; 
+        }
+        .button {
+            padding: 10px 25px;
+            background-color: #f6f2f4;
+            border-radius: 15px;
+            border: 2px solid;
+            outline: 0;
+            font-weight: 700;
+            display: inline-block;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .button:hover{
+            background-color: #dd3d85;
+            font-family: sans-serif;
+            color: white;
+        }
+
+
+        
+        .maincontainer {
+            max-width: 1200px;
+            margin: 50px auto 0;
+            padding: 20px;
+        }
+
+        .servicescontainer {
+            text-align: center;
+        }
+
+        .box-container{
+            display: grid;
+            grid-template-columns: repeat(auto-fit,minmax(220px, auto));
+            gap: 1.5rem;
+            height: 50%;
+        }
+
+        .box{
+           position: relative;
+           height:350px;
+           color:rgb(255, 255, 255);
+           background-color: #1f1d1d;
+            border: 5px solid #e5ff00;
+            padding: 5px;
+            border-radius: 15px;
+        }
+
+        .box:hover{
+            padding: 10px;
+            background-color: #ffffff;
+            color:black;
+            border: 5px solid #ff0000;
+            cursor: pointer;
+            transition: 0.5s ease;
+            position: relative;
+            transform: scale(1.05);
+        }
+
+        #cart-icon{
+            display:flex;
+            margin-right: 100px;
+            text-decoration: none;
+            color: #ffffff;
+            display: inline-block;
+            display: flex;
+        }
+        #cart-icon:hover{
+            color:  #000000 ;
+        }
+        
+        .cart-img{
+            width: 100%;
+            height: 50%;
+        }
+
+
+        h3{
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+        .prod_price{
+            font-weight: 500;
+        }
+        .add-to-cart{
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background: white;
+            color: #000000;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+        .add-to-cart:hover{
+            background: hsl(0, 0%, 0%);
+            color:#ffffff ;
+        }
+        .logo{
+            font-size: 2rem;
+            font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            color: white;
+            font-weight: 400;
+            text-decoration: none;
+        }
+        .cart{
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 360px;
+            min-height: 100vh;
+            padding: 20px;
+            background: #ffffff;
+            box-shadow: -2px 0 4px hsl(0 4% 15% / 10%);
+            transition: .3s;
+        }
+        .cart.active{
+            right: 0;
+        }
+        .cart-title{
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: 2rem;
+        }
+        .cart-box{
+            display: grid;
+            grid-template-columns: 32% 50% 18%;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .cart-img2{
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            padding: 10px;
+        }
+        .detail-box{
+            display: grid;
+            row-gap: 0.5rem;
+        }
+        .cart-product-title{
+            font-size: 1.05rem;
+            text-transform: uppercase;
+        }
+        .cart-price{
+            font-weight: 500;
+        }
+        .popup-image-container {
+            cursor: pointer; /* Add cursor pointer on hover for better UX */
+        }
+
+        .image-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image-popup img {
+            max-width: 800px; /* Adjust max-width as needed */
+            max-height: 600px; /* Adjust max-height as needed */
+        }
+        
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="#" class="logo"> YES FOODIE</a>
+        <nav>
+            <ul class="nav_links">
+                <li><a href="#Shop"><button class="items">HOME</button></a></li>
+                <li><a href="#maincontainer"><button class="items">MENU</button></a></li>
+                </ul>
+        </nav>
+        <a><span href="cart" class="fa fa-shopping-cart cart-icon" id="cart-icon" style="font-size:40px;"></button></span></a>
+    </header>
+    <div class="hero-section" id="Shop">
+        <div class="left">
+            <h1>YES EFREN'S SPECIAL BBQ<br><span style="color: gold;">YES COMBO MEALS</span></h1>
+            <p class="desc" style="color: white;" style="font-family:'Times New Roman', Times, serif;"> YES NA YES SA SARAP!!<br> TRY IT OUT WITH YOUR BARKADA/SUPER FRIENDS<br><br>
+                <a href="#maincontainer "><button class="item1" style="font-weight: 300;">ORDER NOW</button></a>
+            </p>
+        </div>
+        <div class="right">
+            <img src="yfood/frontpage.png" alt="Izzy's Picture">
+        </div>
+        </div>
+    </div>
+    <div class="maincontainer" id="maincontainer">
+        <div class="servicescontainer">
+            <h1 class="heads">YES FOOD SERVICES</h1>
+            <div class="box-container">
+                <div class="box">
+                    <img src="yfood/y1.png" class="cart-img" alt="y1">
+                    <h3 class="prod-title">YES with Java Rice</h3>
+                    <h5 class="desc_title">Yummy YES with Java Rice</h5>
+                    <span class="prod_price">₱ 95</span>
+                    <a class="fa fa-shopping-basket add-to-cart"></a>
+                    <a href="#" class="btn" onclick="displayProduct(y1)"></a>
+                </div>
+                <div class="box">
+                    <img src="yfood/y2.png" class="cart-img" alt="y2">
+                    <h3 class="prod-title">YES na YES with Java Rice</h3>
+                    <h5 class="desc_title">Yummy YES na YES with Java Rice</h5>
+                    <span class="prod_price">₱ 139</span>
+                    <a class="fa fa-shopping-basket add-to-cart"></a>
+                    <a href="#" class="btn" onclick="displayProduct(y1)"></a>
+                </div>
+                <div class="box">
+                    <img src="yfood/y3.png" class="cart-img" alt="y3">
+                    <h3 class="prod-title">YES + HOTDOG with Java Rice</h3>
+                    <h5 class="desc_title">Yummy YES + Hotdog with Java Rice</h5>
+                    <span class="prod_price">₱ 129</span>
+                    <a class="fa fa-shopping-basket add-to-cart"></a>
+                    <a href="#" class="btn" onclick="displayProduct(y1)"></a>
+                </div>
+                <div class="box">
+                    <img src="yfood/y4.png" class="cart-img" alt="y4">
+                    <h3 class="prod-title">YES + TENGA with Java Rice</h3>
+                    <h5 class="desc_title">Yummy YES + Tenga with Java Rice</h5>
+                    <span class="prod_price">₱ 129</span>
+                    <a class="fa fa-shopping-basket add-to-cart"></a>
+                    <a href="#" class="btn" onclick="displayProduct(y1)"></a>
+                </div>
+                <div class="box">
+                    <img src="yfood/y5.png" class="cart-img" alt="y5">
+                    <h3 class="prod-title">YES + ISAW BABOY with Java Rice</h3>
+                    <h5 class="desc_title">Yummy YES + Isaw Baboy with Java Rice</h5>
+                    <span class="prod_price">₱ 129</span>
+                    <a class="fa fa-shopping-basket add-to-cart"></a>
+                    <a href="#" class="btn" onclick="displayProduct(y1)"></a>
+                </div>
+                <div class="box">
+                    <img src="yfood/y6.png" class="cart-img" alt="y6">
+                    <h3 class="prod-title">YES + ISAW MANOK with Java Rice</h3>
+                    <h5 class="desc_title">Yummy YES + Isaw Manok with Java Rice</h5>
+                    <span class="prod_price">₱ 129</span>
+                    <a class="fa fa-shopping-basket add-to-cart"></a>
+                    <a href="#" class="btn" onclick="displayProduct(y1)"></a>
+                </div>
+                <div class="box">
+                    <img src="yfood/y7.png" class="cart-img" alt="y7">
+                    <h3 class="prod-title">YES with FRIENDS</h3>
+                    <h5 class="desc_title">Yummy YES with Friends Bundle</h5>
+                    <span class="prod_price">₱ 239</span>
+                    <a class="fa fa-shopping-basket add-to-cart"></a>
+                    <a href="#" class="btn" onclick="displayProduct(y1)"></a>
+                </div>
+                <div class="box">
+                    <img src="yfood/y8.png" class="cart-img" alt="y8">
+                    <h3 class="prod-title">INIHAW NA LIEMPO with Java Rice</h3>
+                    <h5 class="desc_title">Yummy YES Inihaw na Liempo with Java Rice</h5>
+                    <span class="prod_price">₱ 229</span>
+                    <a class="fa fa-shopping-basket add-to-cart"></a>
+                    <a href="#" class="btn" onclick="displayProduct(y1)"></a>
+                </div>
+                <div class="box">
+                    <img src="yfood/y9.png" class="cart-img" alt="y9">
+                    <h3 class="prod-title">YES CHICKEN BARBEQUE with Java Rice</h3>
+                    <h5 class="desc_title">Yummy YES Chicken BBQ with Java Rice</h5>
+                    <span class="prod_price">₱ 175</span>
+                    <a class="fa fa-shopping-basket add-to-cart"></a>
+                    <a href="#" class="btn" onclick="displayProduct(y1)"></a>
+                </div>
+                <div class="box">
+                    <img src="yfood/y10.png" class="cart-img" alt="y10">
+                    <h3 class="prod-title">YES INIHAW na PORKCHOP with Java Rice</h3>
+                    <h5 class="desc_title">Yummy YES Inihaw na Porkchop with Java Rice</h5>
+                    <span class="prod_price">₱ 125</span>
+                    <a class="fa fa-shopping-basket add-to-cart"></a>
+                    <a href="#" class="btn" onclick="displayProduct(y1)"></a>
+                </div>
+                <div class="box">
+                    <img src="yfood/y11.png" class="cart-img" alt="y11">
+                    <h3 class="prod-title">YES + ISAW BILOG with Java Rice</h3>
+                    <h5 class="desc_title">Yummy YES + Isaw Bilog with Java Rice</h5>
+                    <span class="prod_price">₱ 135</span>
+                    <a class="fa fa-shopping-basket add-to-cart"></a>
+                    <a href="#" class="btn" onclick="displayProduct(y1)"></a>
+                </div>
+                <div class="box">
+                    <img src="yfood/y12.png" class="cart-img" alt="y12">
+                    <h3 class="prod-title">YES with SUPER FRIENDS</h3>
+                    <h5 class="desc_title">Yummy YES with Super Friends Bundle</h5>
+                    <span class="prod_price">₱ 269</span>
+                    <a class="fa fa-shopping-basket add-to-cart"></a>
+                    <a href="#" class="btn" onclick="displayProduct(y1)"></a>
+                </div>
+                <div class="box">
+                    <img src="yfood/y13.png" class="cart-img" alt="y13">
+                    <h3 class="prod-title">YES + BULAKLAK with Java Rice</h3>
+                    <h5 class="desc_title">Yummy YES + Bulaklak with Java Rice</h5>
+                    <span class="prod_price">₱ 129</span>
+                    <a class="fa fa-shopping-basket add-to-cart"></a>
+                    <a href="#" class="btn" onclick="displayProduct(y1)"></a>
+                </div>
+                <div class="box">
+                    <img src="yfood/y14.png" class="cart-img" alt="y14">
+                    <h3 class="prod-title">YES BARKADA</h3>
+                    <h5 class="desc_title">Yummy YES Barkada Bundle</h5>
+                    <span class="prod_price">₱ 299</span>
+                    <a class="fa fa-shopping-basket add-to-cart"></a>
+                    <a href="#" class="btn" onclick="displayProduct(y1)"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.querySelectorAll('.box').forEach(item => {
+            item.addEventListener('click', event => {
+                const title = item.getAttribute('prod-title');
+                const description = item.getAttribute('desc_title');
+                const price = item.getAttribute('prop_price');
+
+                document.getElementById('popupTitle').textContent = title;
+                document.getElementById('popupDescription').textContent = description;
+                document.getElementById('popupPrice').textContent = price;
+
+                document.getElementById('productPopup').style.display = 'block';
+            });
+        });
+
+        function closePopup() {
+            document.getElementById('productPopup').style.display = 'none';
+        }
+
+
+    </script>
+</body>
+</html>
